@@ -9,17 +9,17 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.masantello.demo.models.Books;
+import com.masantello.demo.models.Book;
 
 import jakarta.annotation.Nonnull;
 
 @Repository
-public interface BookRepository extends JpaRepository<Books, String>{
+public interface BookRepository extends JpaRepository<Book, String>{
 	
 	@Nonnull
-	public Optional<Books> findById(@Nonnull String id);
+	public Optional<Book> findById(@Nonnull String id);
 	
-	@Query(value = "SELECT * from Books b WHERE PARSE(b.releaseDate AS TIMESTAMP) >= :currentDate", nativeQuery = true)
-	public List<Books> findBooksReleased(@Param("currentDate") LocalDate currentDate);
+	@Query(value = "SELECT * from Book b WHERE PARSE(b.releaseDate AS TIMESTAMP) >= :currentDate", nativeQuery = true)
+	public List<Book> findBooksReleased(@Param("currentDate") LocalDate currentDate);
 	
 }
