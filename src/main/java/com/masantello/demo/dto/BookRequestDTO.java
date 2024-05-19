@@ -4,11 +4,6 @@ import java.time.LocalDate;
 
 import com.masantello.demo.models.enums.Language;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class BookRequestDTO {
 
 	private String title;
@@ -18,15 +13,14 @@ public class BookRequestDTO {
 	private Language language;
 	private int numberOfPages;
 	private LocalDate releaseDate;
-	private short qtdInSupply;
-	
+	private short quantityInSupply;
 	
 	public BookRequestDTO() {
 		
 	}
 
 	public BookRequestDTO(String title, String description, String author, String editor, Language language,
-			int numberOfPages, LocalDate releaseDate, short qtdInSupply) {
+			int numberOfPages, LocalDate releaseDate, short quantityInSupply) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -35,7 +29,7 @@ public class BookRequestDTO {
 		this.language = language;
 		this.numberOfPages = numberOfPages;
 		this.releaseDate = releaseDate;
-		this.qtdInSupply = qtdInSupply;
+		this.quantityInSupply = quantityInSupply;
 	}
 
 	public String getTitle() {
@@ -94,12 +88,12 @@ public class BookRequestDTO {
 		this.releaseDate = releaseDate;
 	}
 
-	public short getQtdInSupply() {
-		return qtdInSupply;
+	public short getQuantityInSupply() {
+		return quantityInSupply;
 	}
 
-	public void setQtdInSupply(short qtdInSupply) {
-		this.qtdInSupply = qtdInSupply;
+	public void setQuantityInSupply(short quantityInSupply) {
+		this.quantityInSupply = quantityInSupply;
 	}
 	
 }

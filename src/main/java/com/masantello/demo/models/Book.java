@@ -10,17 +10,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity(name="Book")
 @Table(name="Book")
-@Getter
-@Setter	
-@NoArgsConstructor
-@EqualsAndHashCode(of="id")
 public class Book {
 
 	@Id
@@ -33,10 +25,10 @@ public class Book {
 	private Language language;
 	private int numberOfPages;
 	private LocalDate releaseDate;
-	private short qtdInSupply;
-	
+	private short quantityInSupply;
+
 	public Book(String id, String title, String description, String author, String editor, Language language,
-			int numberOfPages, LocalDate releaseDate, short qtdInSupply) {
+			int numberOfPages, LocalDate releaseDate, short quantityInSupply) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -46,7 +38,7 @@ public class Book {
 		this.language = language;
 		this.numberOfPages = numberOfPages;
 		this.releaseDate = releaseDate;
-		this.qtdInSupply = qtdInSupply;
+		this.quantityInSupply = quantityInSupply;
 	}
 
 	public Book(BookRequestDTO bookDto) {
@@ -57,7 +49,7 @@ public class Book {
 		this.language = bookDto.getLanguage();
 		this.numberOfPages = bookDto.getNumberOfPages();
 		this.releaseDate = bookDto.getReleaseDate();
-		this.qtdInSupply = bookDto.getQtdInSupply();
+		this.quantityInSupply = bookDto.getQuantityInSupply();
 	}
 
 	public String getId() {
@@ -124,12 +116,11 @@ public class Book {
 		this.releaseDate = releaseDate;
 	}
 
-	public short getQtdInSupply() {
-		return qtdInSupply;
+	public short getQuantityInSupply() {
+		return quantityInSupply;
 	}
 
-	public void setQtdInSupply(short qtdInSupply) {
-		this.qtdInSupply = qtdInSupply;
+	public void setQuantityInSupply(short quantityInSupply) {
+		this.quantityInSupply = quantityInSupply;
 	}
-
 }

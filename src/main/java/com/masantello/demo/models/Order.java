@@ -6,17 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity(name="Order")
 @Table(name="Order")
-@Getter
-@Setter
-@NoArgsConstructor
-@EqualsAndHashCode(of="id")
 public class Order {
 
 	@Id
@@ -27,6 +19,12 @@ public class Order {
 	private Book book;
 	private String buyerEmail;
 	
+	public Order(Book book, String buyerEmail) {
+		super();
+		this.book = book;
+		this.buyerEmail = buyerEmail;
+	}
+
 	public Order(Integer id, Book book, String buyerEmail) {
 		super();
 		this.id = id;
