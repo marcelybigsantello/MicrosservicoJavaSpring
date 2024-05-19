@@ -2,6 +2,7 @@ package com.masantello.demo.services;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.masantello.demo.dto.BookRequestDTO;
 import com.masantello.demo.dto.EmailRequestDTO;
 import com.masantello.demo.exceptions.BookNotFoundException;
+import com.masantello.demo.exceptions.DataIntegrityViolationsException;
 import com.masantello.demo.helper.Constants;
 import com.masantello.demo.models.Book;
 import com.masantello.demo.models.Order;
@@ -49,7 +51,7 @@ public class BookService {
 
 		if (this.isBookSoldOut(book)) {
 			EmailRequestDTO emailRequest = new EmailRequestDTO(buyerEmail, Constants.FAILED_SUBJECT_EMAIL,
-					"Que pena! O seu pedido do livro" + book.getTitle() + " não existe em estoque. :(");
+					"Que pena! O seu pedido do livro " + book.getTitle() + " não existe em estoque. :(");
 			
 			emailServiceClient.sendEmail(emailRequest);
 		}
@@ -65,5 +67,44 @@ public class BookService {
 		emailServiceClient.sendEmail(emailRequest);
 
 	}
+	
+	private Book findById(String id) {
+		Optional<Book> book = bookRepository.findById(id);
+		
+		if (!book.isPresent()) {
+			throw new BookNotFoundException(Constants.ERROR_BOOK_NOT_FOUND);
+		}
+		
+		return book.get();
+	}
+	
+	private Book findByTitle(BookRequestDTO novo) {
+		Book book = bookRepository.findByTitle(novo.getTitle());
+		if (book != null) {
+			return book;
+		}
+		return null;
+	}
+	
+	public Book updateBook(String id, BookRequestDTO bookDto) {
+		Book book = findById(id);
+		
+		if (this.findByTitle(bookDto) != null && this.findByTitle(bookDto).getId() != id) {
+			throw new DataIntegrityViolationsException(Constants.ERROR_BOOK_ALREADY_EXISTS);
+		}
+		
+		book.setTitle(bookDto.getTitle());
+		book.setDescription(bookDto.getDescription());
+		book.setAuthor(bookDto.getAuthor());
+		book.setEditor(bookDto.getEditor());
+		book.setLanguage(bookDto.getLanguage());
+		book.setNumberOfPages(bookDto.getNumberOfPages());
+		book.setReleaseDate(bookDto.getReleaseDate());
+		book.setQuantityInSupply(bookDto.getQuantityInSupply());
+		
+		return bookRepository.save(book);
+	}
+	
+	
 
 }

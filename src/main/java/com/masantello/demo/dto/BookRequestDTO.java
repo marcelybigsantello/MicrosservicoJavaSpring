@@ -14,10 +14,6 @@ public class BookRequestDTO {
 	private int numberOfPages;
 	private LocalDate releaseDate;
 	private short quantityInSupply;
-	
-	public BookRequestDTO() {
-		
-	}
 
 	public BookRequestDTO(String title, String description, String author, String editor, Language language,
 			int numberOfPages, LocalDate releaseDate, short quantityInSupply) {

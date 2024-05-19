@@ -19,7 +19,10 @@ public interface BookRepository extends JpaRepository<Book, String>{
 	@Nonnull
 	public Optional<Book> findById(@Nonnull String id);
 	
-	@Query(value = "SELECT * from Book b WHERE PARSE(b.releaseDate AS TIMESTAMP) >= :currentDate", nativeQuery = true)
+	@Query(value = "SELECT * FROM Book b WHERE PARSE(b.releaseDate AS TIMESTAMP) >= :currentDate", nativeQuery = true)
 	public List<Book> findBooksReleased(@Param("currentDate") LocalDate currentDate);
+
+	@Query(value = "SELECT obj FROM Book obj WHERE obj.title =:title")
+	public Book findByTitle(@Param("title") String title);
 	
 }
