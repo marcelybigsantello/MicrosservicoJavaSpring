@@ -28,12 +28,12 @@ public class BookController {
 		return bookService.getAllBooks();
 	}
 	
-	@GetMapping
+	/*@GetMapping
 	public List<Book> getUpcomingBooks(){
 		return bookService.getUpcomingBooks();
-	}
+	}*/
 	
-	@PostMapping(value = "/{bookId}/create")
+	@PostMapping()
 	public Book createBook(@RequestBody BookRequestDTO bookDto) {
 		return bookService.createBook(bookDto);
 	}
@@ -42,8 +42,7 @@ public class BookController {
 	public void registerNewOrder(@PathVariable String bookId, @RequestBody OrderRequestDTO orderRequest) {
 		bookService.registerBuyer(bookId, orderRequest.getBuyerEmail());
 	}
-	
-	
+		
 	@PutMapping(value = "/{id}")
 	public Book updateBook(@PathVariable String id, @RequestBody BookRequestDTO bookDto) {
 		return bookService.updateBook(id, bookDto);

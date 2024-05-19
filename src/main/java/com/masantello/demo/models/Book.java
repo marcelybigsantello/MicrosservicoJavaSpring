@@ -27,6 +27,10 @@ public class Book {
 	private LocalDate releaseDate;
 	private short quantityInSupply;
 
+	public Book() {
+		super();
+	}
+
 	public Book(String id, String title, String description, String author, String editor, Language language,
 			int numberOfPages, LocalDate releaseDate, short quantityInSupply) {
 		super();
