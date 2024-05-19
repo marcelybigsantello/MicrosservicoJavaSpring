@@ -14,7 +14,7 @@ import com.masantello.demo.models.Book;
 import jakarta.annotation.Nonnull;
 
 @Repository
-public interface BookRepository extends JpaRepository<Book, String>{
+public interface BookRepository extends JpaRepository<Book, Integer>{
 	
 	@Nonnull
 	public Optional<Book> findById(@Nonnull Integer id);

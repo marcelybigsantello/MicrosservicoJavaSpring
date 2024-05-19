@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.masantello.demo.dto.BookRequestDTO;
-import com.masantello.demo.dto.EmailRequestDTO;
 import com.masantello.demo.exceptions.BookNotFoundException;
+import com.masantello.demo.exceptions.BookSoldOutException;
 import com.masantello.demo.exceptions.DataIntegrityViolationsException;
 import com.masantello.demo.helper.Constants;
 import com.masantello.demo.models.Book;
@@ -50,10 +50,7 @@ public class BookService {
 		Book book = bookRepository.findById(bookId).orElseThrow(BookNotFoundException::new);
 
 		if (this.isBookSoldOut(book)) {
-			EmailRequestDTO emailRequest = new EmailRequestDTO(buyerEmail, Constants.FAILED_SUBJECT_EMAIL,
-					"Que pena! O seu pedido do livro " + book.getTitle() + " não existe em estoque. :(");
-			
-			emailServiceClient.sendEmail(emailRequest);
+			throw new BookSoldOutException(Constants.ERROR_BOOK_IS_SOLD_OUT);
 		}
 
 		Order order = new Order(book, buyerEmail);
@@ -61,10 +58,8 @@ public class BookService {
 
 		book.setQuantityInSupply((short) (book.getQuantityInSupply() - 1));
 
-		EmailRequestDTO emailRequest = new EmailRequestDTO(buyerEmail, Constants.CONFIRMATION_SUBJECT_EMAIL,
-				"O seu pedido do livro " + book.getTitle() + " foi confirmado! Em breve chegará em sua casa.");
-
-		emailServiceClient.sendEmail(emailRequest);
+		/*EmailRequestDTO emailRequest = new EmailRequestDTO(buyerEmail, Constants.CONFIRMATION_SUBJECT_EMAIL,
+				"O seu pedido do livro " + book.getTitle() + " foi confirmado! Em breve chegará em sua casa.");*/
 
 	}
 	
@@ -105,6 +100,9 @@ public class BookService {
 		return bookRepository.save(book);
 	}
 	
+	public List<Order> getAllOrders(){
+		return orderRepository.findAll();
+	}
 	
 
 }
