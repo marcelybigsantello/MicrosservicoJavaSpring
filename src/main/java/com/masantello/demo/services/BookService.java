@@ -26,9 +26,6 @@ public class BookService {
 	@Autowired
 	private OrderRepository orderRepository;
 
-	@Autowired
-	private EmailServiceClient emailServiceClient;
-
 	public List<Book> getAllBooks() {
 		return bookRepository.findAll();
 	}
@@ -46,7 +43,7 @@ public class BookService {
 		return book.getQuantityInSupply() <= 0;
 	}
 
-	public void registerBuyer(Integer bookId, String buyerEmail) {
+	public void registerBuyerInOrder(Integer bookId, String buyerEmail) {
 		Book book = bookRepository.findById(bookId).orElseThrow(BookNotFoundException::new);
 
 		if (this.isBookSoldOut(book)) {
