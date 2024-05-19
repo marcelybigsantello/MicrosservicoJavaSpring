@@ -1,6 +1,7 @@
 package com.masantello.demo.dto;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import com.masantello.demo.models.enums.Language;
 
@@ -15,16 +16,16 @@ public class BookRequestDTO {
 	private LocalDate releaseDate;
 	private short quantityInSupply;
 
-	public BookRequestDTO(String title, String description, String author, String editor, Language language,
-			int numberOfPages, LocalDate releaseDate, short quantityInSupply) {
+	public BookRequestDTO(String title, String description, String author, String editor, Integer language,
+			int numberOfPages, String releaseDate, short quantityInSupply) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.author = author;
 		this.editor = editor;
-		this.language = language;
+		this.language = Language.toEnum(language);
 		this.numberOfPages = numberOfPages;
-		this.releaseDate = releaseDate;
+		this.releaseDate = LocalDate.parse(releaseDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
 		this.quantityInSupply = quantityInSupply;
 	}
 

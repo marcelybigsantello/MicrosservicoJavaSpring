@@ -32,26 +32,6 @@ public enum Language {
 		this.description = description;
 	}
 
-	public static Language findByCode(Integer code) {
-		for (Language language : Language.values()) {
-			if (language.getCode() == code) {
-				return language;
-			}
-		}
-		
-		return null;
-	}
-
-	public static Language findByDescription(String description) {
-		for (Language language : Language.values()) {
-			if (language.getDescription().equalsIgnoreCase(description)) {
-				return language;
-			}
-		}
-
-		return null;
-	}
-
 	public static Language toEnum(Integer code) {
 		if (code == null) {
 			return null;
