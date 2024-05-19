@@ -46,7 +46,7 @@ public class BookService {
 		return book.getQuantityInSupply() <= 0;
 	}
 
-	public void registerBuyer(String bookId, String buyerEmail) {
+	public void registerBuyer(Integer bookId, String buyerEmail) {
 		Book book = bookRepository.findById(bookId).orElseThrow(BookNotFoundException::new);
 
 		if (this.isBookSoldOut(book)) {
@@ -68,7 +68,7 @@ public class BookService {
 
 	}
 	
-	private Book findById(String id) {
+	private Book findById(Integer id) {
 		Optional<Book> book = bookRepository.findById(id);
 		
 		if (!book.isPresent()) {
@@ -86,7 +86,7 @@ public class BookService {
 		return null;
 	}
 	
-	public Book updateBook(String id, BookRequestDTO bookDto) {
+	public Book updateBook(Integer id, BookRequestDTO bookDto) {
 		Book book = findById(id);
 		
 		if (this.findByTitle(bookDto) != null && this.findByTitle(bookDto).getId() != id) {

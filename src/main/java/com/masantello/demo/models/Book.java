@@ -16,8 +16,8 @@ import jakarta.persistence.Table;
 public class Book {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private String id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 	private String title;
 	private String description;
 	private String author;
@@ -31,7 +31,7 @@ public class Book {
 		super();
 	}
 
-	public Book(String id, String title, String description, String author, String editor, Language language,
+	public Book(Integer id, String title, String description, String author, String editor, Language language,
 			int numberOfPages, LocalDate releaseDate, short quantityInSupply) {
 		super();
 		this.id = id;
@@ -56,11 +56,11 @@ public class Book {
 		this.quantityInSupply = bookDto.getQuantityInSupply();
 	}
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

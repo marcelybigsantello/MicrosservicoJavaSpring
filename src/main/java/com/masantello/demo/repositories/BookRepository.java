@@ -17,7 +17,7 @@ import jakarta.annotation.Nonnull;
 public interface BookRepository extends JpaRepository<Book, String>{
 	
 	@Nonnull
-	public Optional<Book> findById(@Nonnull String id);
+	public Optional<Book> findById(@Nonnull Integer id);
 	
 	@Query(value = "SELECT * FROM Book b WHERE parsedatetime(b.releaseDate, 'dd/MM/yyyy') >= :currentDate", nativeQuery = true)
 	public List<Book> findBooksReleased(@Param("currentDate") LocalDate currentDate);

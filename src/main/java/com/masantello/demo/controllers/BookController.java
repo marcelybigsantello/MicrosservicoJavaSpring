@@ -39,12 +39,12 @@ public class BookController {
 	}
 	
 	@PostMapping(value = "/{bookId}/createOrder")
-	public void registerNewOrder(@PathVariable String bookId, @RequestBody OrderRequestDTO orderRequest) {
+	public void registerNewOrder(@PathVariable Integer bookId, @RequestBody OrderRequestDTO orderRequest) {
 		bookService.registerBuyer(bookId, orderRequest.getBuyerEmail());
 	}
 		
 	@PutMapping(value = "/{id}")
-	public Book updateBook(@PathVariable String id, @RequestBody BookRequestDTO bookDto) {
+	public Book updateBook(@PathVariable Integer id, @RequestBody BookRequestDTO bookDto) {
 		return bookService.updateBook(id, bookDto);
 	}
 		
