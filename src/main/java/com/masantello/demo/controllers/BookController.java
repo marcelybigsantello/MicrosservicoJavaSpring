@@ -30,11 +30,6 @@ public class BookController {
 		return bookService.getAllBooks();
 	}
 	
-	@GetMapping(value = "/upcoming")
-	public List<Book> getUpcomingBooks(){
-		return bookService.getUpcomingBooks();
-	}
-	
 	@GetMapping(value = "/orders")
 	public List<Order> getAllOrders(){
 		return bookService.getAllOrders();
@@ -45,10 +40,9 @@ public class BookController {
 		return bookService.createBook(bookDto);
 	}
 	
-	@PostMapping(value = "/{eventId}/register")
-	public ResponseEntity registerNewOrder(@PathVariable Integer bookId, @RequestBody OrderRequestDTO orderRequest) {
+	@PostMapping(value = "/{bookId}/registerOrder")
+	public void registerNewOrder(@PathVariable Integer bookId, @RequestBody OrderRequestDTO orderRequest) {
 		bookService.registerBuyerInOrder(bookId, orderRequest.getBuyerEmail());
-		return ResponseEntity.ok("Order created successfully");
 	}
 		
 	@PutMapping(value = "/{id}")
