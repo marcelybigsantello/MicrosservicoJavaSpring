@@ -15,16 +15,17 @@ Este projeto foi desenvolvido como forma de avaliação para a disciplina de Sof
 do Mba de Engenharia de Software da FIAP.
 
 A ideia do sistema é cadastrar livros e cadastrar pedidos para cada livro, utilizando arquitetura de microsserviços.
-O sistema também conta com padrões de projetos (design patterns) para microsserviços. 
+O sistema também conta com padrões de projetos (design patterns) para microsserviços.
+&nbsp;
 São eles: 
-    . Information Expert
-    . Controller
-    . High Cohesion
-    . Low Coupling
-    . Injeção de Dependência
-    . Comunicação Síncrona via Request/Response
-    . Composição por API
-    . BD Compartilhado
+    * Information Expert
+    * Controller
+    * High Cohesion
+    * Low Coupling
+    * Injeção de Dependência
+    * Comunicação Síncrona via Request/Response
+    * Composição por API
+    * BD Compartilhado
 
 ## Installation
 
