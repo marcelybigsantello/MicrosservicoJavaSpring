@@ -5,6 +5,7 @@ Este projeto contém APIs e foi escrito em **Java, Java Spring, H2 as the databa
 ## Table of Contents
 
 - [Summary](#summary)
+- [EnumLanguages](#enum)
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
@@ -34,6 +35,20 @@ São eles:
     * Composição por API
 
     * BD Compartilhado
+
+## EnumLanguages
+
+No projeto, existe um tipo enumerado referente aos idiomas em que o livro pode ter sido escrito. 
+Para a API de POST funcionar, é necessário informar o número inteiro e não a sua descrição
+
+DE-PARA
+
+    . 0 - Portuguese
+
+    . 1 - English
+
+    . 2 - Spanish
+
 
 ## Installation
 

@@ -53,11 +53,8 @@ public class BookService {
 		Order order = new Order(book, buyerEmail);
 		orderRepository.save(order);
 
-		book.setQuantityInSupply((short) (book.getQuantityInSupply() - 1));
-
-		/*EmailRequestDTO emailRequest = new EmailRequestDTO(buyerEmail, Constants.CONFIRMATION_SUBJECT_EMAIL,
-				"O seu pedido do livro " + book.getTitle() + " foi confirmado! Em breve chegará em sua casa.");*/
-
+		book.setQuantityInSupply((short) (book.getQuantityInSupply()-1));
+		bookRepository.save(book);
 	}
 	
 	private Book findById(Integer id) {
