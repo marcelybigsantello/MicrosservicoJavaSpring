@@ -85,6 +85,7 @@ GET /books - Recupera uma lista de todos os livros
         "language": "PORTUGUESE",
         "numberOfPages": 150,
         "releaseDate": "2007-02-01",
+        "price": 15.95,
         "quantityInSupply": 200
     },
     {
@@ -96,6 +97,7 @@ GET /books - Recupera uma lista de todos os livros
         "language": "PORTUGUESE",
         "numberOfPages": 460,
         "releaseDate": "2009-02-10",
+        "price": 29.95,
         "quantityInSupply": 20
     }
 ]
@@ -114,6 +116,7 @@ POST /books - Registra um novo livro na Aplicação
 	"language": 0,
 	"numberOfPages": 460,
 	"releaseDate": "20/02/2009",
+    "price": 29.95,
 	"quantityInSupply": 10
 }
 ```
@@ -132,6 +135,7 @@ PUT /books/${id} - Atualiza as informações de um livro cadastrado
 	"language": 0,
 	"numberOfPages": 152,
 	"releaseDate": "01/01/2007",
+    "price": 15.95,
 	"quantityInSupply": 15
 }
 ```
@@ -164,6 +168,7 @@ GET /books/orders - Recupera uma lista de todos os pedidos de livros
             "language": "PORTUGUESE",
             "numberOfPages": 150,
             "releaseDate": "2007-02-01",
+            "price": 15.95,
             "quantityInSupply": 200
         },
         "buyerEmail": "teste@gmail.com"

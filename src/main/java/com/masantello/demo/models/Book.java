@@ -11,8 +11,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity(name="Book")
-@Table(name="Book")
+@Entity(name = "Book")
+@Table(name = "Book")
 public class Book {
 
 	@Id
@@ -25,6 +25,7 @@ public class Book {
 	private Language language;
 	private int numberOfPages;
 	private LocalDate releaseDate;
+	private float price;
 	private short quantityInSupply;
 
 	public Book() {
@@ -32,7 +33,7 @@ public class Book {
 	}
 
 	public Book(Integer id, String title, String description, String author, String editor, Language language,
-			int numberOfPages, LocalDate releaseDate, short quantityInSupply) {
+			int numberOfPages, LocalDate releaseDate, float price, short quantityInSupply) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -42,6 +43,7 @@ public class Book {
 		this.language = language;
 		this.numberOfPages = numberOfPages;
 		this.releaseDate = releaseDate;
+		this.price = price;
 		this.quantityInSupply = quantityInSupply;
 	}
 
@@ -53,6 +55,7 @@ public class Book {
 		this.language = bookDto.getLanguage();
 		this.numberOfPages = bookDto.getNumberOfPages();
 		this.releaseDate = bookDto.getReleaseDate();
+		this.price = bookDto.getPrice();
 		this.quantityInSupply = bookDto.getQuantityInSupply();
 	}
 
@@ -120,6 +123,14 @@ public class Book {
 		this.releaseDate = releaseDate;
 	}
 
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
 	public short getQuantityInSupply() {
 		return quantityInSupply;
 	}
@@ -127,4 +138,5 @@ public class Book {
 	public void setQuantityInSupply(short quantityInSupply) {
 		this.quantityInSupply = quantityInSupply;
 	}
+
 }

@@ -14,10 +14,11 @@ public class BookRequestDTO {
 	private Language language;
 	private int numberOfPages;
 	private LocalDate releaseDate;
+	private float price;
 	private short quantityInSupply;
 
 	public BookRequestDTO(String title, String description, String author, String editor, Integer language,
-			int numberOfPages, String releaseDate, short quantityInSupply) {
+			int numberOfPages, String releaseDate, float price, short quantityInSupply) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -26,6 +27,7 @@ public class BookRequestDTO {
 		this.language = Language.toEnum(language);
 		this.numberOfPages = numberOfPages;
 		this.releaseDate = LocalDate.parse(releaseDate, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		this.price = price;
 		this.quantityInSupply = quantityInSupply;
 	}
 
@@ -83,6 +85,14 @@ public class BookRequestDTO {
 
 	public void setReleaseDate(LocalDate releaseDate) {
 		this.releaseDate = releaseDate;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
 	}
 
 	public short getQuantityInSupply() {

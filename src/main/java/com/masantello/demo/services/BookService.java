@@ -11,6 +11,7 @@ import com.masantello.demo.dto.BookRequestDTO;
 import com.masantello.demo.exceptions.BookNotFoundException;
 import com.masantello.demo.exceptions.BookSoldOutException;
 import com.masantello.demo.exceptions.DataIntegrityViolationsException;
+import com.masantello.demo.exceptions.RegisterBookException;
 import com.masantello.demo.helper.Constants;
 import com.masantello.demo.models.Book;
 import com.masantello.demo.models.Order;
@@ -32,6 +33,11 @@ public class BookService {
 
 	public Book createBook(BookRequestDTO bookDto) {
 		Book book = new Book(bookDto);
+		
+		if (!this.isPriceValid(book)) {
+			throw new RegisterBookException(Constants.ERROR_REGISTER_BOOK);
+		}
+		
 		return bookRepository.save(book);
 	}
 	
@@ -39,8 +45,12 @@ public class BookService {
 		return bookRepository.findBooksReleased(LocalDate.now());
 	}
 	
-	public Boolean isBookSoldOut(Book book) {
+	private Boolean isBookSoldOut(Book book) {
 		return book.getQuantityInSupply() <= 0;
+	}
+	
+	private boolean isPriceValid(Book book) {
+		return book.getPrice() > (float) 0;
 	}
 
 	public void registerBuyerInOrder(Integer bookId, String buyerEmail) {
@@ -56,7 +66,7 @@ public class BookService {
 		book.setQuantityInSupply((short) (book.getQuantityInSupply()-1));
 		bookRepository.save(book);
 	}
-	
+
 	private Book findById(Integer id) {
 		Optional<Book> book = bookRepository.findById(id);
 		
@@ -89,6 +99,7 @@ public class BookService {
 		book.setLanguage(bookDto.getLanguage());
 		book.setNumberOfPages(bookDto.getNumberOfPages());
 		book.setReleaseDate(bookDto.getReleaseDate());
+		book.setPrice(bookDto.getPrice());
 		book.setQuantityInSupply(bookDto.getQuantityInSupply());
 		
 		return bookRepository.save(book);

@@ -59,13 +59,14 @@ class BookServiceTests {
 		List<Book> books = new ArrayList<Book>();
 
 		Book book1 = new Book(1, "1984", "Clássico", "George Orwell", "Companhia das Letras", Language.PORTUGUESE, 460,
-				LocalDate.parse("2009-05-01"), (short) 10);
+				LocalDate.parse("2009-05-01"), (float) 19.95, (short) 10);
 		Book book2 = new Book(2, "A revolução dos Bichos", "", "George Orwell", "Companhia das Letras",
-				Language.PORTUGUESE, 120, LocalDate.parse("2007-10-01"), (short) 10);
+				Language.PORTUGUESE, 120, LocalDate.parse("2007-10-01"), (float) 15.42, (short) 10);
 		Book book3 = new Book(3, "A planta de ferro", "Ambientado em Londres, em 1930, tem como tema "
 				+ "a ambição romântica de Gordon Comstock de desafiar a adoração do deus do dinheiro e do status.",
-				"George Orwell", "Principis", Language.PORTUGUESE, 256, LocalDate.parse("2021-01-10"), (short) 10);
-
+				"George Orwell", "Principis", Language.PORTUGUESE, 256, LocalDate.parse("2021-01-10"), 
+				(float) 23.92, (short) 10);
+		
 		books.add(book1);
 		books.add(book2);
 		books.add(book3);
@@ -77,15 +78,15 @@ class BookServiceTests {
 		List<Book> books = new ArrayList<Book>();
 		
 		Book book1 = new Book(1, "Um Porto Seguro", "Drama e Romance", "Nicholas Sparks", "Editora Arqueiro", 
-				Language.PORTUGUESE, 304, LocalDate.now().plusMonths(2), (short) 10);
+				Language.PORTUGUESE, 304, LocalDate.now().plusMonths(2), (float) 47.92, (short) 10);
 		Book book2 = new Book(2, "Um Amor para Recordar", "", "Nicholas Sparks", "Editora Arqueiro",
-				Language.PORTUGUESE, 144, LocalDate.now().plusYears(1), (short) 20);
+				Language.PORTUGUESE, 144, LocalDate.now().plusYears(1), (float) 29.95, (short) 20);
 		Book book3 = new Book(3, "Diário de uma Paixão", "", "Nicholas Sparks", "Editora Arqueiro", 
-				Language.PORTUGUESE, 256, LocalDate.now().plusMonths(3), (short) 30);
+				Language.PORTUGUESE, 256, LocalDate.now().plusMonths(3), (float) 47.92, (short) 30);
 		Book book4 = new Book(4, "A Escolha", "", "Nicholas Sparks", "Editora Arqueiro",
-				Language.PORTUGUESE, 240, LocalDate.now().plusDays(20), (short) 15);
+				Language.PORTUGUESE, 240, LocalDate.now().plusDays(20), (float) 47.92, (short) 15);
 		Book book5 = new Book(5, "Dear John", "", "Nicholas Sparks", "Editora Arqueiro", 
-				Language.ENGLISH, 256, LocalDate.parse("2017-04-30"), (short) 20);
+				Language.ENGLISH, 256, LocalDate.parse("2017-04-30"), (float) 66.38, (short) 20);
 				
 		books.add(book1);
 		books.add(book2);
