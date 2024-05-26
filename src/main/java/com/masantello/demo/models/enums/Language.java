@@ -2,7 +2,7 @@ package com.masantello.demo.models.enums;
 
 public enum Language {
 
-	PORTUGUESE(0, "Portuguese"), ENGLISH(1, "English"), SPANISH(2, "Spanish");
+	PORTUGUESE(0, "Portuguese"), ENGLISH(1, "English"), SPANISH(2, "Spanish"), ITALIAN(3, "Italian");
 
 	private Integer code;
 	private String description;
